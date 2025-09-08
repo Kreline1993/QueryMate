@@ -1,0 +1,15 @@
+# === Environment
+.env
+
+# === VS Code ===
+.vscode/
+.history/
+
+# === Logs / cache ===
+*.log
+*.cache
+
+# === OS files (Windows) ===
+Thumbs.db
+ehthumbs.db
+Desktop.ini
