@@ -1,0 +1,24 @@
+{
+  "name": "querymate",
+  "version": "1.0.0",
+  "description": "A chatbot wrapped in a PHP backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kreline1993/QueryMate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kreline1993/QueryMate/issues"
+  },
+  "homepage": "https://github.com/Kreline1993/QueryMate#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.13",
+    "tailwindcss": "^4.1.13"
+  }
+}
