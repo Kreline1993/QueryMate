@@ -1,41 +1,55 @@
-<?php /* index.php — Tailwind test homepage */ ?>
+<?php $page = 'home'; ?>
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="assets/css/output.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QueryMate — Home</title>
+  <link rel="stylesheet" href="/querymate/public/assets/css/output.css?v=1">
 </head>
-<body class="min-h-screen bg-gray-700 text-gray-900 flex items-center justify-center p-6">
-  <main class="w-full max-w-3xl bg-white rounded-2xl shadow-xl overflow-hidden">
-    <header class="px-6 py-4 bg-gray-300 border-b border-black/10 flex items-center justify-between">
-      <h1 class="text-xl font-semibold">QueryMate — Tailwind Test - Going Poorly</h1>
-      <span class="text-xs text-gray-500">XAMPP • PHP + Ollama</span>
-    </header>
+<body class="min-h-screen bg-gray-500 text-gray-900">
+  <!-- Nav -->
+  <header class="w-full mx-auto p-4 flex justify-center">
+    <nav class="w-[50vw] bg-gray-300 rounded-xl shadow border border-black/10 flex items-center justify-center gap-1 p-2">
+      <a href="/querymate/index.php"  class="px-3 py-2 rounded-lg text-sm font-medium 
+      <?php echo ($page === 'home') ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+      ?>">Home</a>
+      <a href="/querymate/public/views/tutor.php"  class="px-3 py-2 rounded-lg text-sm font-medium 
+      <?php echo ($page === 'tutor') ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100' 
+      ?>">Tutor</a>
+      <a href="/querymate/public/views/builder.php"class="px-3 py-2 rounded-lg text-sm font-medium 
+      <?php echo ($page === 'builder') ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+      ?>">Builder</a>
+    </nav>
+  </header>
 
-    <section class="p-6 space-y-4 bg-gray-300">
-      <div>
-        <label for="sql" class="block text-sm font-medium">Your SQL</label>
-        <!-- TEAL input box -->
-        <textarea id="sql"
-          class="mt-1 w-full min-h-[140px] rounded-xl bg-teal-500 text-black placeholder-white/80 p-4 font-mono text-sm shadow-inner focus:outline-none focus:ring-2 focus:ring-white/60"
-          placeholder="Paste your SQL here..."></textarea>
-      </div>
+<body class="min-h-screen bg-gray-700 text-gray-900 flex items-center justify-center p-4">
+  <main class="w-full flex items-center justify-center">
+    <section class="w-[50vw] h-[75vh] bg-gray-300 rounded-2xl shadow-lg p-6 overflow-hidden">
+      <h1 class="text-3xl font-semibold text-center">Welcome to QueryMate!</h1>
+      <p class="text-center">Choose either tutor or builder mode.</p>
+<div class="mt-6 flex justify-center gap-4">
+  <a href="/querymate/public/views/tutor.php"
+          class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold text-white shadow
+            bg-[#4193C9] hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4193C9]">
+    Tutor
+  </a>
+  <a href="/querymate/public/views/builder.php"
+     class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold text-white shadow
+            bg-[#42AA94] hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#42AA94]">
+    Builder
+  </a>
+</div>
+<div class="mx-auto w-full flex justify-center">
+<img
+  src="/querymate/public/assets/img/QueryMateLogo.png"
+  alt="QueryMate mascot"
+  class="block w-full max-w-[420px] h-auto object-contain"/>
+</div>
 
-      <div class="flex gap-3 flex-wrap">
-        <button id="btnAnalyze"
-          class="px-4 py-2 rounded-lg bg-gray-900 text-white hover:bg-black transition">Analyze</button>
-        <button id="btnClear"
-          class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition">Clear</button>
-      </div>
 
-      <div>
-        <label class="block text-sm font-medium mb-1">Response</label>
-        <!-- MEDIUM BLUE response box -->
-        <div id="out"
-          class="rounded-xl bg-blue-500 text-white p-4 min-h-[120px] whitespace-pre-wrap font-mono text-sm shadow-inner">
-          —
-        </div>
-      </div>
-      </body>
+
+    </section>
+  </main>
+</body>
 </html>
