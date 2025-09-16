@@ -4,16 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="dist/output.css" rel="stylesheet">
+  <link href="assets/css/output.css" rel="stylesheet">
 </head>
 <body class="min-h-screen bg-gray-700 text-gray-900 flex items-center justify-center p-6">
   <main class="w-full max-w-3xl bg-white rounded-2xl shadow-xl overflow-hidden">
-    <header class="px-6 py-4 border-b border-black/10 flex items-center justify-between">
+    <header class="px-6 py-4 bg-gray-300 border-b border-black/10 flex items-center justify-between">
       <h1 class="text-xl font-semibold">QueryMate — Tailwind Test - Going Poorly</h1>
       <span class="text-xs text-gray-500">XAMPP • PHP + Ollama</span>
     </header>
 
-    <section class="p-6 space-y-4">
+    <section class="p-6 space-y-4 bg-gray-300">
       <div>
         <label for="sql" class="block text-sm font-medium">Your SQL</label>
         <!-- TEAL input box -->
