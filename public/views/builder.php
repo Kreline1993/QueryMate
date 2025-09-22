@@ -7,7 +7,7 @@
   <link href="/querymate/public/assets/css/output.css?v=1" rel="stylesheet">
 </head>
 <body class="min-h-screen bg-gray-500 text-gray-900">
-  <!-- Nav -->
+
   <header class="w-full mx-auto p-4 flex justify-center">
     <nav class="w-[50vw] bg-gray-300 rounded-xl shadow border border-black/10 flex items-center justify-center gap-1 p-2">
       <a href="/querymate/index.php"  class="px-3 py-2 rounded-lg text-sm font-medium 
