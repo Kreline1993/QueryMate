@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/querymate/public/assets/css/output.css?v=1">
 </head>
 <body class="min-h-screen bg-gray-500 text-gray-900">
-  <!-- Nav -->
+
   <header class="w-full mx-auto p-4 flex justify-center">
     <nav class="w-[50vw] bg-gray-300 rounded-xl shadow border border-black/10 flex items-center justify-center gap-1 p-2">
       <a href="/querymate/index.php"  class="px-3 py-2 rounded-lg text-sm font-medium 
@@ -27,7 +27,7 @@
   <main class="w-full flex items-center justify-center">
     <section class="w-[50vw] h-[75vh] bg-gray-300 rounded-2xl shadow-lg p-6 overflow-hidden">
       <h1 class="text-3xl font-semibold text-center">Welcome to QueryMate!</h1>
-      <p class="text-center">Choose either tutor or builder mode.</p>
+      <p class="text-center">Your friendly SQL tutor</p>
 <div class="mt-6 flex justify-center gap-4">
   <a href="/querymate/public/views/tutor.php"
           class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold text-white shadow
