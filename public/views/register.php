@@ -1,4 +1,40 @@
 <?php $page = 'register'; ?>
+<?php
+require __DIR__ . '/../../db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $confirmpassword = $_POST['confirmpassword'] ?? '';
+
+    if ($password !== $confirmpassword) {
+        echo "<p style='color:red;'>Error: Passwords do not match.</p>";
+        exit;
+    }
+
+    if ($username && $email && $password) {
+        $hash = password_hash($password, PASSWORD_ARGON2ID);
+
+        $stmt = $pdo->prepare("INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)");
+        try {
+            $stmt->execute([$username, $email, $hash]);
+            echo "<p style='color:green;'>Registration successful!</p>";
+        }
+        catch (PDOException $e) {
+            if ($e->getCode() === 23000) {
+                echo "<p style='color:red;'>Username or email already taken.</p>";
+            }
+            else {
+                echo "<p style='color:red;'>Error: " . $e->getMessage() . "</p>";
+            }
+        }
+    }
+    else {
+        echo "<p style='color:red;'>All fields required.</p>";
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,7 +55,7 @@
   <main class="w-full flex items-center justify-center">
     <section class="w-[50vw] h-[75vh] bg-gray-300 rounded-2xl shadow-lg p-6 overflow-hidden">
       <h1 class="text-3xl font-semibold text-center">Sign Up</h1>
-      <form class="w-1/2 mx-auto space-y-6">
+      <form class="w-1/2 mx-auto space-y-6" method="post" action="register.php">
         <div>
             <label for="username" class="block text-sm font-medium mb-2">Username</label>
             <input class="w-full px-3 py-2 rounded-md bg-gray-50 border border-gray-400 text-gray-900" 
