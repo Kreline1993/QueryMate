@@ -16,3 +16,6 @@ Desktop.ini
 
 # === Tailwind ===
 node_modules
+
+# === Database ===
+db.php

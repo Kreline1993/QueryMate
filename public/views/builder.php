@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/querymate/public/assets/css/output.css?v=1" rel="stylesheet">
+  <link rel="stylesheet" href="/querymate/public/assets/css/output.css?v=2">
 </head>
-<body class="min-h-screen bg-gray-500 text-gray-900">
+<body class="min-h-screen bg-gradient-to-tl from-[#42AA94] to-[#4193C9] text-gray-900">
 
   <header class="w-full mx-auto p-4 flex justify-center">
     <nav class="w-[50vw] bg-gray-300 rounded-xl shadow border border-black/10 flex items-center justify-center gap-1 p-2">
@@ -22,7 +22,6 @@
     </nav>
   </header>
 
-<body class="min-h-screen bg-gray-700 text-gray-900 flex items-center justify-center p-4">
   <main class="w-full flex items-center justify-center">
     <section class="w-[50vw] h-[75vh] bg-gray-300 rounded-2xl shadow-lg p-6 overflow-auto">
       <h1 class="text-3xl font-semibold text-center">QueryMate Builder</h1>
