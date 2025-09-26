@@ -7,7 +7,7 @@
   <title>Sign Up</title>
   <link rel="stylesheet" href="/querymate/public/assets/css/output.css?v=2">
 </head>
-<body class="min-h-screen bg-gray-500 text-gray-900">
+<body class="min-h-screen bg-gradient-to-tl from-[#42AA94] to-[#4193C9] text-gray-900">
 
   <header class="w-full mx-auto p-4 flex justify-center">
     <nav class="w-[50vw] bg-gray-300 rounded-xl shadow border border-black/10 flex items-center justify-center gap-1 p-2">
