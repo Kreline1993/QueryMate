@@ -21,9 +21,11 @@ $page = 'home';
       <a href="/querymate/public/views/tutor.php"  class="px-3 py-2 rounded-lg text-sm font-medium 
       <?php echo ($page === 'tutor') ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100' 
       ?>">Tutor</a>
-      <a href="/querymate/public/views/builder.php"class="px-3 py-2 rounded-lg text-sm font-medium 
+      <a href="/querymate/public/views/builder.php" class="px-3 py-2 rounded-lg text-sm font-medium 
       <?php echo ($page === 'builder') ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
       ?>">Builder</a>
+      <a href="public\views\logout.php" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+      >Log out</a>
       <?php endif; ?>
     </nav>
   </header>
@@ -32,6 +34,14 @@ $page = 'home';
     <section class="w-[50vw] h-[75vh] bg-gray-300 rounded-2xl shadow-lg p-6 overflow-hidden">
       <h1 class="text-3xl font-semibold text-center">Welcome to QueryMate!</h1>
       <p class="text-center">Your friendly SQL tutor</p>
+      <?php if (isset($_SESSION['user_id'])): ?>
+      <div class="mt-6 mx-auto w-full flex justify-center">
+        <img
+          src="/querymate/public/assets/img/QueryMateLogo.png"
+          alt="QueryMate mascot"
+          class="block w-full max-w-[420px] h-auto object-contain"/>
+      </div>
+      <?php else: ?>
       <div class="mt-6 flex justify-center gap-4">
         <form class="w-1/4 mx-auto space-y-4" method="post" action="/querymate/public/views/login.php">
         <div>
@@ -52,22 +62,16 @@ $page = 'home';
       </div>
             </div>
         </form>
-      </div>
-      <div class="mt-6 flex justify-center gap-4">
-
+              <div class="mt-6 flex justify-center gap-4">
         <a href="public\views\register.php"
           class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold text-white shadow
             bg-gradient-to-r from-[#4193C9] to-[#42AA94] 
                 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#42AA94]">
         Sign up</a>
       </div>
-
-      <div class="mt-6 mx-auto w-full flex justify-center">
-        <img
-          src="/querymate/public/assets/img/QueryMateLogo.png"
-          alt="QueryMate mascot"
-          class="block w-full max-w-[420px] h-auto object-contain"/>
+        <?php endif; ?>
       </div>
+
 
     </section>
   </main>
