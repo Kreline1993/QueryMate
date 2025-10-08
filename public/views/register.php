@@ -3,8 +3,8 @@
 require __DIR__ . '/../../db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'] ?? '';
-    $email = $_POST['email'] ?? '';
+    $username = filter_var($_POST['username'] ?? '', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'] ?? '';
     $confirmpassword = $_POST['confirmpassword'] ?? '';
 
@@ -41,19 +41,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sign Up</title>
-  <link rel="stylesheet" href="/querymate/public/assets/css/output.css?v=2">
+  <link rel="stylesheet" href="/querymate/public/assets/css/output.css?v=6">
 </head>
 <body class="min-h-screen bg-gradient-to-tl from-[#42AA94] to-[#4193C9] text-gray-900">
 
   <header class="w-full mx-auto p-4 flex justify-center">
-    <nav class="w-[50vw] bg-gray-300 rounded-xl shadow border border-black/10 flex items-center justify-center gap-1 p-2">
+    <nav class="w-[75vw] bg-gray-300 rounded-xl shadow border border-black/10 flex items-center justify-center gap-1 p-2">
       <a href="/querymate/index.php"  class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100">
     Cancel</a>
     </nav>
   </header>
 
-  <main class="w-full flex items-center justify-center">
-    <section class="w-[50vw] h-[75vh] bg-gray-300 rounded-2xl shadow-lg p-6 overflow-hidden">
+  <main class="w-screen flex items-center justify-center">
+    <section class="w-[75vw] min-h-[80vh] bg-gray-300 rounded-2xl shadow-lg p-6 overflow-hidden">
       <h1 class="text-3xl font-semibold text-center">Sign Up</h1>
       <form class="w-1/2 mx-auto space-y-6" method="post" action="register.php">
         <div>
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div>
             <button
                 type="submit"
-                class="w-full py-2 px-4 rounded-md text-white font-medium bg-gradient-to-r from-[#42AA94] to-[#4193C9] 
+                class="cursor-pointer w-full py-2 px-4 rounded-md text-white font-medium bg-gradient-to-r from-[#42AA94] to-[#4193C9] 
                 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#42AA94]">Sign Up</button>
         </div>
       </form>
