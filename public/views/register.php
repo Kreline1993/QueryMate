@@ -1,9 +1,9 @@
-<?php $page = 'register'; ?>
 <?php
-require __DIR__ . '/../../db.php';
+$page = 'register'; // used for navbar to highlight the current page
+require_once __DIR__ . '/../../db.php'; // connect to database
 session_start();
 
-$errors =[];
+$errors =[]; // array to hold error messages
 $data = ['username' => '', 'email' => ''];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -11,7 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     $confirmpassword = $_POST['confirmpassword'] ?? '';
-
+/* Check for allowed inputs,
+if inputs are invalid the associated error is saved in errors array to be printed to user */
     if ($username === '') {
       $errors['username'] = "Username is required.";
     } elseif (!preg_match('/^[A-Za-z0-9_]+$/', $username)) {
@@ -34,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $errors['password'] = "Password must be at least 8 characters and include uppercase, lowercase, a number, and a special character.";
     }
 
+    // Convert tags and special characters to prevent XSS attacks
     $data['username'] = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
     $data['email'] = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
 
@@ -43,14 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([':u' => $username, ':e' => $email]);
         $row = $stmt->fetch();
 
-        if ($row) {
-          if ($row['username'] === $username) {
+        if ($row) { 
+          if ($row['username'] === $username) {// ensure username is unique
             $errors['username'] = "Username is already taken.";
         }
-        if ($row['email'] === $email) {
+        if ($row['email'] === $email) {//ensure email is unique
           $errors['email'] = "Email already registered.";
         }
-        } else {
+        } else { // hash password and prepare
           $algo = defined('PASSWORD_ARGON2ID') ? PASSWORD_ARGON2ID : PASSWORD_DEFAULT;
           $hash = password_hash($password, $algo);
 
@@ -61,10 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           exit;
         }
       } catch (PDOException $e) {
-        $errors['server'] = "Database error: " . htmlspecialchars($e->getMessage());
+        $errors['server'] = "Database error: " . htmlspecialchars($e->getMessage()); // not to be used in production
         }
     }
   }
+  // Saved if no errors to display success message
 $success = isset($_GET['success']);  
 ?>
 <!doctype html>
@@ -146,4 +149,5 @@ $success = isset($_GET['success']);
     </section>
   </main>
 </body>
+<?php include __DIR__ . '/partials/footer.php'; ?>
 </html>
