@@ -13,7 +13,9 @@ $page = 'home';
 <body class="min-h-screen bg-gradient-to-tl from-[#42AA94] to-[#4193C9] text-gray-900">
 
   <header class="w-full mx-auto p-4 flex justify-center">
-    <nav class="w-[50vw] bg-gray-300 rounded-xl shadow border border-black/10 flex items-center justify-center gap-1 p-2">
+<!-- TO DO -- Make this into an included file -->
+<!-- Nav bar only shows links if logged in, otherwise only small empty bar  is shown to make it look pretty -->
+    <nav class="w-[70vw] bg-gray-300 rounded-xl shadow border border-black/10 flex items-center justify-center gap-1 p-2">
       <?php if (isset($_SESSION['user_id'])): ?>
       <a href="/querymate/index.php"  class="px-3 py-2 rounded-lg text-sm font-medium 
       <?php echo ($page === 'home') ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
@@ -34,6 +36,7 @@ $page = 'home';
 <section class="w-[70vw] min-h-[75vh] bg-gray-300 rounded-2xl shadow-lg p-8 overflow-hidden">
   <h1 class="text-3xl font-semibold text-center mb-8">Welcome to QueryMate!</h1>
       <p class="text-xl font-semibold text-center mb-6">Your friendly SQL tutor</p>
+      <!-- If not logged in(no session) user is shown log in and sign up options -->
       <?php if (!isset($_SESSION['user_id'])): ?>
   <div class="grid grid-cols-2 gap-8 items-center">
     <div class="flex justify-center">
@@ -80,6 +83,7 @@ $page = 'home';
       </a>
     </div>
   </div>
+      <!-- If user logged in show only mascot image-->
   <?php else: ?>
         <div class="flex justify-center">
       <img
