@@ -1,5 +1,5 @@
 <?php
-$page = 'register'; // used for navbar to highlight the current page
+$pageTitle = 'Register'; // used for navbar to highlight the current page and title
 require_once __DIR__ . '/../../db.php'; // connect to database
 session_start();
 
@@ -68,17 +68,9 @@ if inputs are invalid the associated error is saved in errors array to be printe
     }
   }
   // Saved if no errors to display success message
-$success = isset($_GET['success']);  
+$success = isset($_GET['success']);
+include __DIR__ . '/partials/header.php' // header
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sign Up</title>
-  <link rel="stylesheet" href="/querymate/public/assets/css/output.css?v=6">
-</head>
-<body class="min-h-screen bg-gradient-to-tl from-[#42AA94] to-[#4193C9] text-gray-900">
 
   <header class="w-full mx-auto p-4 flex justify-center">
     <nav class="w-[75vw] bg-gray-300 rounded-xl shadow border border-black/10 flex items-center justify-center gap-1 p-2">
