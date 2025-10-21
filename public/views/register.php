@@ -69,15 +69,9 @@ if inputs are invalid the associated error is saved in errors array to be printe
   }
   // Saved if no errors to display success message
 $success = isset($_GET['success']);
-include __DIR__ . '/partials/header.php' // header
+include __DIR__ . '/partials/header.php'; // header
+include __DIR__ . '/partials/nav_bar.php'; // nav bar
 ?>
-
-  <header class="w-full mx-auto p-4 flex justify-center">
-    <nav class="w-[75vw] bg-gray-300 rounded-xl shadow border border-black/10 flex items-center justify-center gap-1 p-2">
-      <a href="/querymate/index.php"  class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100">
-    Cancel</a>
-    </nav>
-  </header>
 
   <main class="w-screen flex items-center justify-center">
     <section class="w-[75vw] min-h-[80vh] bg-gray-300 rounded-2xl shadow-lg p-6 overflow-hidden">
