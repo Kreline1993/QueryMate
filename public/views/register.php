@@ -134,6 +134,4 @@ include __DIR__ . '/partials/nav_bar.php'; // nav bar
 
     </section>
   </main>
-</body>
 <?php include __DIR__ . '/partials/footer.php'; ?>
-</html>

@@ -1,39 +1,11 @@
 <?php
 session_start();
-$page = 'home';
+$pageTitle = 'home';
+include __DIR__ . '/views/partials/header.php';
+include __DIR__ . '/views/partials/nav_bar.php';
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>QueryMate — Home</title>
-  <link rel="stylesheet" href="/querymate/public/assets/css/output.css?v=3">
-</head>
-<body class="min-h-screen bg-gradient-to-tl from-[#42AA94] to-[#4193C9] text-gray-900">
-
-  <header class="w-full mx-auto p-4 flex justify-center">
-<!-- TO DO -- Make this into an included file -->
-<!-- Nav bar only shows links if logged in, otherwise only small empty bar  is shown to make it look pretty -->
-    <nav class="w-[70vw] bg-gray-300 rounded-xl shadow border border-black/10 flex items-center justify-center gap-1 p-2">
-      <?php if (isset($_SESSION['user_id'])): ?>
-      <a href="/querymate/index.php"  class="px-3 py-2 rounded-lg text-sm font-medium 
-      <?php echo ($page === 'home') ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-      ?>">Home</a>
-      <a href="/querymate/public/views/tutor.php"  class="px-3 py-2 rounded-lg text-sm font-medium 
-      <?php echo ($page === 'tutor') ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100' 
-      ?>">Tutor</a>
-      <a href="/querymate/public/views/builder.php" class="px-3 py-2 rounded-lg text-sm font-medium 
-      <?php echo ($page === 'builder') ? 'text-blue-600 bg-blue-50' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-      ?>">Builder</a>
-      <a href="public\views\logout.php" class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-      >Log out</a>
-      <?php endif; ?>
-    </nav>
-  </header>
-
-  <main class="w-full flex items-center justify-center">
-<section class="w-[70vw] min-h-[75vh] bg-gray-300 rounded-2xl shadow-lg p-8 overflow-hidden">
+<main class="w-full flex items-center justify-center">
+<section class="w-[75vw] min-h-[75vh] bg-gray-300 rounded-2xl shadow-lg p-8 overflow-hidden">
   <h1 class="text-3xl font-semibold text-center mb-8">Welcome to QueryMate!</h1>
       <p class="text-xl font-semibold text-center mb-6">Your friendly SQL tutor</p>
       <!-- If not logged in(no session) user is shown log in and sign up options -->
@@ -96,5 +68,4 @@ $page = 'home';
 </section>
 
   </main>
-</body>
-</html>
+<?php include __DIR__ . '/views/partials/footer.php'; ?>
