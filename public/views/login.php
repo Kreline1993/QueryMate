@@ -1,30 +1,5 @@
 <?php
-session_start();
-require __DIR__ . '/../../db.php';
-
-$err = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email    = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
-
-    if (!$email || !$password) {
-        $err = 'All fields are required.';
-    } else {
-        $stmt = $pdo->prepare("SELECT id, username, password_hash FROM users WHERE email = ?");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch();
-
-        if ($user && password_verify($password, $user['password_hash'])) {
-            $_SESSION['user_id']  = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            header("Location: /querymate/index.php");
-            exit;
-        } else {
-            $err = 'Incorrect email or password.';
-        }
-    }
-}
+// Uses $err from the controller
 ?>
 <!doctype html>
 <html lang="en">
@@ -38,11 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <section class="w-[50vw] max-w-md bg-gray-300 rounded-2xl shadow-lg p-6">
       <h1 class="text-3xl font-semibold text-center mb-6">Log In</h1>
 
-      <?php if ($err): ?>
+      <?php if (!empty($err)): ?>
         <p class="mb-4 text-red-700 font-medium"><?= htmlspecialchars($err) ?></p>
       <?php endif; ?>
 
-      <form method="post" action="/querymate/public/views/login.php" class="space-y-5">
+      <!-- Important: route through the front controller -->
+      <form method="post" action="/querymate/public/?r=auth/login" class="space-y-5">
         <div>
           <label for="email" class="sr-only">Email</label>
           <input class="w-full px-3 py-2 rounded-md bg-gray-50 border border-gray-400 text-gray-900"
