@@ -19,3 +19,6 @@ node_modules
 
 # === Database ===
 db.php
+
+# === Composer dependencies ===
+/vendor/
