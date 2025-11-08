@@ -1,20 +1,14 @@
 <?php
-// Uses $err from the controller
+$pageTitle = '';
+include __DIR__ . '/partials/header.php';
+include __DIR__ . '/partials/nav_bar.php';
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Log In</title>
-  <link rel="stylesheet" href="/querymate/public/assets/css/output.css?v=2">
-</head>
-<body class="min-h-screen bg-gradient-to-tl from-[#42AA94] to-[#4193C9] text-gray-900">
   <main class="w-full flex items-center justify-center p-6">
     <section class="w-[50vw] max-w-md bg-gray-300 rounded-2xl shadow-lg p-6">
       <h1 class="text-3xl font-semibold text-center mb-6">Log In</h1>
 
-      <?php if (!empty($err)): ?>
-        <p class="mb-4 text-red-700 font-medium"><?= htmlspecialchars($err) ?></p>
+      <?php if (!empty($errorMessage)): ?>
+        <p class="mb-4 text-red-700 font-medium"><?= htmlspecialchars($errorMessage) ?></p>
       <?php endif; ?>
 
       <!-- Important: route through the front controller -->
@@ -41,5 +35,4 @@
       </p>
     </section>
   </main>
-</body>
-</html>
+<?php include __DIR__ . '/partials/footer.php'; ?>

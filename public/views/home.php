@@ -46,7 +46,7 @@ include __DIR__ . '/partials/nav_bar.php';
 
       <p class="text-xl font-semibold text-center mt-6">Don't have an account?</p>
       <a
-        href="/querymate/public/views/register.php"
+        href="/querymate/public/?r=auth/register"
         class="block w-3/4 text-center mt-4 px-5 py-2.5 rounded-lg font-semibold text-white shadow
         bg-gradient-to-r from-[#4193C9] to-[#42AA94]
         hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#42AA94]">

@@ -23,10 +23,10 @@
         }
         ?>
         
-        <a href="/querymate/public/views/tutor.php"  class="px-3 py-2 rounded-lg text-sm font-medium 
+        <a href="/querymate/public/?r=tutor/index"  class="px-3 py-2 rounded-lg text-sm font-medium 
         <?php echo $navStyling; /* Pass rest  of styling */?>">Tutor</a>
         
-        <a href="public\views\logout.php" 
+        <a href="/querymate/public/?r=auth/logout" 
         class="px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100"
         >Log out</a>
 
