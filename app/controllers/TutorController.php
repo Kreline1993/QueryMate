@@ -61,7 +61,11 @@ class TutorController
 
         // Short instruction so responses stay in SQL-tutor mode
         $prompt = "You are a helpful SQL tutor. "
-            . "Explain clearly with short SQL examples and avoid unrelated topics. "
+            . "You will reply as a human teacher would."
+            . "Explain clearly with short SQL examples."
+            . "Do not discuss unrelated topics. If the question isn't SQL related, just say you cannot answer that."
+            . "Return your entire answer as HTML only (using <p>, <strong>, <code>, <pre>, <ul>, <ol>, <li>, <br>)."
+            . "Do not use Markdown syntax, especially not triple quotes."
             . "User question: " . $question;
 
         // Call a suitable model (check README; this is the style they show)
@@ -70,6 +74,7 @@ class TutorController
             ->generateContent($prompt);
 
         $text = trim($result->text() ?? '');
+        $text = $this->cleanGeminiReply($text);
 
         if ($text === '') {
             return "I couldn't generate a response. Try rephrasing your SQL question.";
@@ -80,5 +85,14 @@ class TutorController
         // Generic error message so real errors aren't leaked
         return "Sorry, I’m having trouble reaching the tutor service right now.";
     }
+}
+private function cleanGeminiReply(string $text): string
+{
+    // Remove code block fences like ```html, ```sql, or plain ```
+    $text = preg_replace('/^```[a-zA-Z]*\s*/m', '', $text); // remove opening fence
+    $text = preg_replace('/```$/m', '', $text);              // remove closing fence
+    $text = trim($text);
+
+    return $text;
 }
 }

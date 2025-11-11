@@ -24,24 +24,30 @@ include __DIR__ . '/partials/nav_bar.php';
     <!-- Chat history -->
     <div class="flex-1 bg-gray-100 rounded-lg p-4 mb-4 overflow-y-auto">
       <?php if (!empty($messages)): ?>
-        <?php foreach ($messages as $msg): ?>
-          <?php
-            $isUser = $msg['sender'] === 'user';
-            $align  = $isUser ? 'items-end' : 'items-start';
-            $bg     = $isUser
-                      ? 'bg-[#4193C9] text-white'
-                      : 'bg-white text-gray-900';
-            $label  = $isUser ? 'You' : 'Tutor';
-          ?>
-          <div class="mb-2 flex <?= $align ?>">
-            <div class="max-w-[70%] px-3 py-2 rounded-lg shadow text-sm <?= $bg ?>">
-              <div class="font-semibold mb-1"><?= $label ?></div>
-              <div class="whitespace-pre-wrap">
+      <?php foreach ($messages as $msg): ?>
+        <?php
+          $isUser = $msg['sender'] === 'user';
+          $align  = $isUser ? 'items-end' : 'items-start';
+          $bg     = $isUser
+                    ? 'bg-[#4193C9] text-white'
+                    : 'bg-white text-gray-900';
+          $label  = $isUser ? 'You' : 'Tutor';
+        ?>
+        <div class="mb-2 flex <?= $align ?>">
+          <div class="max-w-[70%] px-3 py-2 rounded-lg shadow text-sm <?= $bg ?>">
+            <div class="font-semibold mb-1"><?= $label ?></div>
+
+            <div class="whitespace-pre-wrap">
+              <?php if ($isUser): ?>
                 <?= htmlspecialchars($msg['text'], ENT_QUOTES, 'UTF-8') ?>
-              </div>
+              <?php else: ?>
+                <?= $msg['text'] // already HTML from Gemini ?>
+              <?php endif; ?>
             </div>
+
           </div>
-        <?php endforeach; ?>
+        </div>
+      <?php endforeach; ?>
       <?php else: ?>
         <p class="text-sm text-gray-600">
           No messages yet. Ask something like:
