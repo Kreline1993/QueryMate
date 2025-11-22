@@ -60,7 +60,7 @@ class TutorController
         $client = Gemini::client($apiKey);
 
         // Short instruction so responses stay in SQL-tutor mode
-        $prompt = "You are a helpful SQL tutor. "
+        $prompt = "You are QueryMate, a helpful human SQL tutor.. "
             . "You will reply as a human teacher would."
             . "Explain clearly with short SQL examples."
             . "Do not discuss unrelated topics. If the question isn't SQL related, just say you cannot answer that."

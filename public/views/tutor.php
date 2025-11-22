@@ -31,7 +31,7 @@ include __DIR__ . '/partials/nav_bar.php';
           $bg     = $isUser
                     ? 'bg-[#4193C9] text-white'
                     : 'bg-white text-gray-900';
-          $label  = $isUser ? 'You' : 'Tutor';
+          $label  = $isUser ? 'You' : 'QueryMate';
         ?>
         <div class="mb-2 flex <?= $align ?>">
           <div class="max-w-[70%] px-3 py-2 rounded-lg shadow text-sm <?= $bg ?>">
